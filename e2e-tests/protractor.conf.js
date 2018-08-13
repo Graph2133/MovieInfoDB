@@ -1,7 +1,5 @@
-//jshint strict: false
 exports.config = {
-
-  allScriptsTimeout: 11000,
+  allScriptsTimeout: 110000,
 
   specs: [
     '*.js'
@@ -11,12 +9,11 @@ exports.config = {
     'browserName': 'chrome'
   },
 
-  baseUrl: 'http://localhost:8000/',
+  baseUrl: 'http://localhost:8000/#/',
 
   framework: 'jasmine',
 
   jasmineNodeOpts: {
-    defaultTimeoutInterval: 30000
+    defaultTimeoutInterval: 300000
   }
-
 };

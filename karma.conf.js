@@ -8,8 +8,11 @@ module.exports = function(config) {
       'bower_components/angular/angular.js',
       'bower_components/angular-route/angular-route.js',
       'bower_components/angular-mocks/angular-mocks.js',
-      'components/**/*.js',
-      'view*/**/*.js'
+      'bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
+      'catalog/*.js',
+      'genre/*.js',
+      'components/movie/*.js',
+      'components/paginate/*.js'
     ],
 
     autoWatch: true,

@@ -1,42 +1,42 @@
 'use strict';
 
-/* https://github.com/angular/protractor/blob/master/docs/toc.md */
+describe('Integration tests: movieDB', function () {
 
-describe('my app', function() {
-
-
-  it('should automatically redirect to /view1 when location hash/fragment is empty', function() {
-    browser.get('index.html');
-    expect(browser.getLocationAbsUrl()).toMatch("/view1");
-  });
-
-
-  describe('view1', function() {
-
-    beforeEach(function() {
-      browser.get('index.html#!/view1');
+  describe('catalog', function(){
+    beforeEach(function(){
+      browser.get('/#');
     });
 
+    it('should render the catalog page when user navigates to /', function(){
+      expect(browser.getCurrentUrl()).toMatch('\/#');
+    });
 
-    it('should render view1 when user navigates to /view1', function() {
-      expect(element.all(by.css('[ng-view] p')).first().getText()).
-        toMatch(/partial for view 1/);
+    it('should take you to the genre catalog when you click a link on the genre list', function(){
+      var link = element(by.css('.list-group-item:nth-child(2)'));
+      link.click();
+      expect(browser.getCurrentUrl()).toMatch('\/genre\/Action');
     });
 
   });
 
+  describe('movie', function(){ 
 
-  describe('view2', function() {
-
-    beforeEach(function() {
-      browser.get('index.html#!/view2');
+    beforeEach(function(){ 
+      browser.get('/#/movie/222935');
     });
 
+    it('should render the movies details page', function(){
+      var ele = by.css('.moviedetails');
+      expect(browser.isElementPresent(ele)).toBe(true);
+    });
 
-    it('should render view2 when user navigates to /view2', function() {
-      expect(element.all(by.css('[ng-view] p')).first().getText()).
-        toMatch(/partial for view 2/);
+    it('should take you back to the movie galery when you click Return to Catalog', function(){
+      var link = element(by.css('.return-btn'));
+      link.click();
+      expect(browser.getCurrentUrl()).toMatch('\/#');
     });
 
   });
+
+
 });
